@@ -35,5 +35,12 @@ create table attacks (
 -- 1. Count the urls which have been attacked and have the protocol 'https'
 select count(*)
 from attacks
-where number_of_attacks > 0 and url like 'https%'
+where number_of_attacks > 0 and url like 'https%';
 
+-- 2. List the records where the URL attacked matches with google (it does not matter if it is google.co.jp, google.es, google.pt, etc) order by number of attacks ascendent
+select *
+from attacks
+where url like '%google%'
+order by number_of_attacks asc
+
+-- 3. List the ip addresses and the time of the last attack if the attack has been produced the last year (2017) (Hint: https://stackoverflow.com/a/30071091)
